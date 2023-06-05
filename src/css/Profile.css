@@ -1,0 +1,73 @@
+#Profile{
+    display: flex;
+    justify-content: center;
+    padding: 32px
+}
+
+#ButtonLogout{
+    position: absolute;
+    background-color: #363636;
+    padding: 8px;
+    border: none;
+    top: 0;
+    right: 0;
+    color: white;
+}
+#ProfileWrap{
+    box-sizing: border-box;
+    width: 600px;
+    padding: 8px;
+}
+#ProfileTitle{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#ProfileTable{
+    width: 100%;
+    font-size: 18px;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    margin-top: 16px;
+    margin-bottom: 10px;
+}
+
+#ProfileTable > tbody > tr{
+    padding: 10px;
+}
+
+#ProfileTable > tbody > tr > td{
+    border-left: 1px solid grey;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding: 10px;
+}
+#ProfileTable > tbody > tr > th{
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    padding: 10px;
+}
+
+#ProfileTable > thead > tr > td{
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+
+
+@media all and (max-width: 500px){
+    #Profile{
+        width: 100vw;
+        box-sizing: border-box;
+        padding: 16px;
+    }
+
+    #ProfileWrap{
+        box-sizing: border-box;
+        width: 100vw;
+        padding: 16px;
+    }
+}

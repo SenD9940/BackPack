@@ -1,0 +1,13 @@
+#ManageMarket{
+    display: flex;
+    flex-direction: row;
+}
+#ManageMarketContents{
+    flex-grow: 1;
+}
+
+@media all and (max-width: 950px){
+    #ManageMarket{
+        flex-direction: column;
+    }
+}

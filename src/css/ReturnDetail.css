@@ -1,0 +1,62 @@
+#ReturnDetail{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#ReturnDetailCustomerInfo{
+    margin: 16px;
+}
+
+#ReturnDetailTable{
+    font-size: 18px;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+#ReturnDetailTable > tbody > tr{
+    padding: 10px;
+}
+
+#ReturnDetailTable > tbody > tr > td{
+    border-left: 1px solid grey;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding: 10px;
+}
+#ReturnDetailTable > tbody > tr > th{
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    padding: 10px;
+}
+
+#ReturnDetailTable > thead > tr > td{
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+hr{
+    width: 100%;
+    margin: 16px;
+}
+
+#ReturnDetailContents{
+    margin: 16px;
+}
+
+#ReturnDetailContentsTitle{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#ButtonConfrimWrap{
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+

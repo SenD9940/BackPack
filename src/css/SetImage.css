@@ -1,0 +1,20 @@
+.SetImage{
+    display: flex;
+    width: 100%;
+    min-width: 150px;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+}
+
+.SetBaseImage{
+    display: block;
+    width: 100%;
+}
+
+.SetImageLabel{
+    color: white;
+    position: absolute;
+    font-size: 40px;
+    z-index: 1;
+}

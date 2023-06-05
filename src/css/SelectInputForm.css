@@ -1,0 +1,24 @@
+.SelectInputForm{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.SelectInput{
+    -webkit-appearance: none;
+    -webkit-border-radius:0;
+    width: 100%;
+	padding: 12px;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 4px;
+	background-color: #e6e6e6;
+    font-size: 16px;
+    text-align: center;
+}
+.SelectInput:hover, #SelectInput:focus{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.025);
+    transition: 0.5s;
+}

@@ -1,0 +1,22 @@
+#ReturnChart{
+    margin-top: 32px;
+    border: 1px solid grey;
+}
+
+#ReturnChartLabel{
+    text-align: center;
+    font-size: 18px;
+    padding: 8px;
+}
+
+@media all and (max-width: 500px){
+    #ReturnCarts{
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 450px){
+    #ReturnChart{
+        padding-right: 20px;
+    }
+}

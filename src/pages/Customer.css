@@ -1,0 +1,55 @@
+#CustomerContentsWrap{
+    margin: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#CustomerContents{
+    width: 500px;
+}
+
+.SelectInput{
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+    color:black;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+
+#CustomerButtonWrap{
+    display: flex;
+    justify-content: center;
+}
+
+#ImageUploadFieldset{
+    border: 1px solid black;
+    margin-bottom: 16px;
+}
+
+#ImageUploadWrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top:16px;
+    margin-bottom:16px;
+    padding: 8px;
+	background-color: #e6e6e6;
+	border-radius: 4px;
+}
+#ImageUploadWrap:hover{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transform: scale(1.025);
+    transition: 0.5s;
+}
+
+@media all and (max-width: 500px){
+    #Customer{
+        width: 100vw;
+    }
+    #CustomerContents{
+        width: 100%;
+    }
+}

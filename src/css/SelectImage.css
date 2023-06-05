@@ -1,0 +1,27 @@
+#SelectImageWrap{
+    display: flex;
+    margin: 8px;
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 8px;
+    width: 150px;
+}
+
+.SelectedImage{
+    display: block;
+    text-align: center;
+    width: 100%;
+    min-width: 120px;
+    color: white;
+    font-size: 40px;
+    font-weight: bolder;
+    border: 1px solid grey;
+}
+
+#SelectImageWrap:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.025);
+    transition: 0.5s;
+}

@@ -1,0 +1,15 @@
+#CompanyNavItem{
+    width: 100px;
+    padding: 12px;
+    color: white;
+}
+
+#CompanyNavItemName{
+    text-align: center;
+}
+
+#CompanyNavItem:hover{
+    width: 100px;
+    padding: 12px;
+    background-color: #363636;
+}

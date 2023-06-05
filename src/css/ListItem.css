@@ -1,0 +1,16 @@
+#ListItem{
+    padding: 12px;
+    width: 200px;
+    text-align: center;
+}
+
+#ListItem:hover{
+    background-color: #363636;
+}
+
+@media all and (max-width: 950px){
+    #ListItem{
+        width: 120px;
+        flex: 0 0 auto;
+    }
+}

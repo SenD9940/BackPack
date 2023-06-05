@@ -1,0 +1,21 @@
+#CheckAccountBalance{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+#CheckAccountBalanceWrap{
+    padding: 16px;
+    width: 400px;
+}
+
+#CheckAccountBalanceContents{
+    width: 100%;
+    text-align: right;
+    background-color: grey;
+    color: white;
+    padding: 8px;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+

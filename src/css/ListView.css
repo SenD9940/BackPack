@@ -1,0 +1,35 @@
+#ListView{
+    display: flex;
+    background-color: #4c4b4b;
+    color: white;
+    height: 100%;
+    width: fit-content;
+    flex-direction: column;
+    position: relative;
+}
+
+#ListViewTitle{
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+}
+
+@media all and (max-width: 950px){
+    #ListViewTitle{
+        text-align: center;
+        padding: 8px;
+        font-weight: bold;
+        border: 1px solid #363636;
+    }
+    
+    #ListViewLists{
+        width: 100vw;
+        display: flex;
+        flex-wrap: no-wrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+    .wrap-vertical::-webkit-scrollbar{
+        display: none; 
+    }
+}

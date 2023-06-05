@@ -1,0 +1,17 @@
+#ReturnHistory{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+#ReturnHistoryContent{
+    flex-grow: 1;
+}
+
+
+@media all and (max-width: 950px){
+    #ReturnHistory{
+        display: flex;
+        flex-direction: column;
+    }
+}

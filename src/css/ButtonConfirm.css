@@ -1,0 +1,16 @@
+#ButtonConfirm{
+    width: 100%;
+    background-color:#363636;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+#ButtonConfirm:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.025);
+    transition: 0.5s;
+}

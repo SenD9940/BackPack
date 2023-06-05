@@ -1,0 +1,57 @@
+#Register{
+    display: flex;
+    flex-direction: column;
+}
+
+#RegisterContentsWrap{
+    display: flex;
+    justify-content: center;
+}
+
+#RegisterContentsMain{
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+}
+
+#RegisterContents{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    width: 450px;
+}
+
+#BusinessWrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#ButtonBusinessSearch{
+    background-color: #953735;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+#ButtonBusinessSearchCancel{
+    background-color: gray;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+
+
+@media all and (max-width: 500px){
+    #RegisterContents{
+        width: 400px;
+    }
+}

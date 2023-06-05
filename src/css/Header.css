@@ -1,0 +1,14 @@
+#Header{
+    padding: 32px;
+    background-color: #363636;
+    text-align: center;
+    color: white;
+}
+
+#HeaderTitle{
+    font-size: 40px;
+}
+
+#HeaderSubTitle{
+    font-size: 18px;
+}

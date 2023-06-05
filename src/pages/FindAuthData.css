@@ -1,0 +1,36 @@
+#FindAuthData{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#FindAuthDataWrap{
+    width: 500px;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+#FindAuthDataContents{
+    margin-top: 8px;
+}
+
+#InputEssentails{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    font-size: 18px;
+    border:1px solid grey;
+    border-radius: 4px;
+    flex-grow: 1;
+    margin-bottom: 8px;
+}
+
+@media all and (max-width:500px){
+    #FindAuthDataWrap{
+        width: 100vw;
+    }
+}

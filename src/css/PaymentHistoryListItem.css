@@ -1,0 +1,9 @@
+#PaymentHistoryListItem{
+    background-color: #363636;
+    color: white;
+    padding: 8px;
+}
+
+#PaymentHistoryListItemPrice{
+    text-align: right;
+}

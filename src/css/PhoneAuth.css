@@ -1,0 +1,51 @@
+#PhoneAuth{
+    display: flex;
+    flex-direction:column;
+    margin-bottom: 8px;
+}
+
+.PhoneInputWrap{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+.PhoneInput{
+    -webkit-appearance: none;
+    -webkit-border-radius:0;
+    width: 100%;
+	padding: 12px;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 4px;
+	background-color: #e6e6e6;
+    font-size: 16px;
+    text-align: right;
+}
+
+.PhoneInput:disabled{
+    background-color: grey;
+}
+
+
+#PhoneInputCode{
+    display: flex;
+    flex-direction: column;
+}
+
+.PhoneButtonAuth{
+    background-color: #363636;
+    border: 1px solid black;
+    font-size: 18px;
+    color: white;
+    display: inline-block;
+    padding: 12px;
+    width: 150px;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.PhoneInput:hover, .PhoneInput:focus{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.025);
+    transition: 0.5s;
+}

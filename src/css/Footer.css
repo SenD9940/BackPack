@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+#Footer{
+    background-color: #363636;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    font-family: 굴림;
+    box-sizing: border-box;
+    bottom: 0px;
+}
+
+#FooterTitle{
+    letter-spacing: 5px;
+}

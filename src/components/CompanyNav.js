@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CompanyNavItem from "./CompanyNavItem";
 import "../css/CompanyNav.css";
 function CompanyNav({navItems, navSelected, setNavSelected}){

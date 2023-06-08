@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import { firebaseLogin, readFireStore } from "../server/firebase";
 import Modal from "./Modal";
 import ButtonConfirm from "./ButtonConfrim";
-import { decrypto } from "../functions/crypto";
 import { useNavigate } from 'react-router-dom';
 
 function Login(){
     const navigate = useNavigate();
+    const [user, setUser] = useState("");
     const [input, setInput] = useState({
         email:'',
         pw:'',
@@ -24,30 +24,46 @@ function Login(){
         });
     }
 
-    function siginIn(){
-        firebaseLogin(input.email, input.pw).then(user => {
-            if(user){
-                if(getUser(user.uid)){
-                    navigate("/Company");
-                    setLoginState(true);
-                    return;
-                }
-            }
-            setLoginState(false);
+    useEffect(()=>{
+        if(user.length){
+            console.log(user);
+            
+        }
+    }, [user])
+
+    async function siginIn(){
+        const uid = await firebaseLogin(input.email, input.pw).then(user => {
+           return user.uid;
         });
+        if(getUser(uid)){
+            setLoginState(true);
+            return;
+        }
+        setLoginState(false);
     }
+
 
     async function getUser(uid){
         const query = {var_name:"uid", operator:"==", data:uid};
         const result = await readFireStore("auth", query).then(res => {
-            res.forEach(data => {
-                sessionStorage.setItem("market_no", data.data().market_no);
-                sessionStorage.setItem("uid", data.data().uid);
-                return true;
-            })
+            saveUser(res._snapshot.docChanges[0].doc.data.value.mapValue.fields).then(res =>{
+                if(res){
+                    navigate("/Company");
+                }
+            });
+            return true;
         })
         return result;
     }
+
+    async function saveUser(data){
+        return new Promise((reslove, reject) => {
+            sessionStorage.setItem("market_no", data.market_no.stringValue);
+            sessionStorage.setItem("uid", data.uid.stringValue);
+            reslove(true);
+        })
+    }
+
 
     function onModalConfirm(){
         setInput({

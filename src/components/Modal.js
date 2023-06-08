@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import "../css/Modal.css";
 import { disableScroll, enableScroll } from "../functions/scroll";
 function Modal({title, subTitle, onModalConfirm, onModalCancel}){

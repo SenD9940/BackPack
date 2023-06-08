@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Customer.css";
 import Header from "../components/Header";
 import TextInputForm from "../components/TextInputForm";
-import axios from 'axios';
 import ButtonConfirm from "../components/ButtonConfrim";
 import SelectImage from "../components/SelectImage";
 import {readFireStore, uploadStorage, writeFireStore } from "../server/firebase";

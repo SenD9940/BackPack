@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Company.css";
-import Login from "../components/Login";
 import Market from "./Market";
 import Admin from "./Admin";
 

@@ -1,20 +1,15 @@
 import { readFireStore} from "../server/firebase";
-import axios from "axios";
+import { searchBusinessNo } from "../server/publicData";
 
 //사업자번호 유효성 검사 (국세청에 등록되어 있는지)
 async function businessValidationCheck(value) {
-    const url = `https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=${process.env.REACT_APP_BUSINESS_KEY}`
-    const result = await axios.post(url, {
-        b_no:[value]
-    }).then(res => {
-        if(res.data.data[0].tax_type !== '국세청에 등록되지 않은 사업자등록번호입니다.'){
-            return true;
-        }else{
-            return false;
-        }
-    }).catch(err => {
-        console.log(err);
-    });
+    let result = false;
+    const res = await searchBusinessNo(value);
+    if(res !== '국세청에 등록되지 않은 사업자등록번호입니다.'){
+        result = true;
+    }else{
+        result = false;
+    }
     return result;
 }
 

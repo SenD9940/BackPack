@@ -14,6 +14,7 @@ import PhoneAuth from "../components/PhoneAuth";
 import { useNavigate } from 'react-router-dom';
 import SelectInputForm from "../components/SelectInputForm";
 import { listDataSelectedValidationCheck, lengthValidationCheck } from "../functions/ValidationCheck";
+import { searchAddress } from "../server/publicData";
 
 function Customer(){
     const navigate = useNavigate();
@@ -55,22 +56,8 @@ function Customer(){
 
 
     async function searchAddr(value){
-        const url = `https://business.juso.go.kr/addrlink/addrLinkApiJsonp.do?resultType=json&keyword=${value}&confmKey=${process.env.REACT_APP_ADDRESS_KEY}`;
-        await axios.post(url).then(res =>{
-                let data = res.data.replace("(", "");
-                data = data.substring(0, data.length - 1);
-                data = JSON.parse(data);
-                const juso = data.results.juso;
-                if(juso !== null){
-                let address = []
-                for(var i = 0; i < juso.length; i++){
-                    address.push(juso[i].roadAddr);
-                }
-                setAddress(address);
-            }
-        }).catch(err => {
-            console.log(err);
-        })
+        const address = await searchAddress(value);
+        setAddress(address);
     }
 
     useEffect(()=>{

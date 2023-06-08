@@ -4,6 +4,7 @@ import Login from "../components/Login";
 import Market from "./Market";
 import Admin from "./Admin";
 
+//마켓페이지, 어드민 페이지 컨트롤러
 function Company(){
     const user = sessionStorage.getItem("market_no");
     return(

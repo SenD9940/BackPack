@@ -1,5 +1,13 @@
+#ButtonConfirmWrap{
+    display: inline-block;
+    justify-content: center;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+
 #ButtonConfirm{
-    width: 100%;
+    width: 120px;
     background-color:#363636;
     border: none;
     color: white;

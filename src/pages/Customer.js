@@ -213,7 +213,7 @@ function Customer(){
                     image_right:urls[2],
                     image_back:urls[3],
                     image_inside:urls[4],
-                    return_state:false
+                    return_state:"false"
                 }).then(res => {
                     setPersentLoading(false);
                     setModalShow(true);

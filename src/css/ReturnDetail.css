@@ -54,9 +54,8 @@ hr{
     text-align: center;
 }
 
-#ButtonConfrimWrap{
+#ButtonReturnApproveOptionWrap{
     display: flex;
     justify-content: center;
     margin-top: 32px;
 }
-

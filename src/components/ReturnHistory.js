@@ -45,12 +45,13 @@ function ReturnHistory({user, nav}){
     }
 
     function setHistoryList(data){
-        if(nav === "승인내역" && data.data().return_state){
+        if(nav === "승인" && data.data().return_state === "true"){
             setHistory((history) => [...history, data.data()]);
-        }else if(nav === "미승인내역" && !data.data().return_state){
+        }else if(nav === "미승인" && data.data().return_state === "false"){
             setHistory((history) => [...history, data.data()]);
-        }
-        else if(nav === "전체내역"){
+        }else if(nav === "거절" && data.data().return_state === "refused"){
+            setHistory((history) => [...history, data.data()]);
+        }else if(nav === "전체"){
             setHistory((history) => [...history, data.data()]);
         }
     }

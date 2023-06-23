@@ -2,7 +2,7 @@ import React from "react";
 import "../css/ButtonConfirm.css";
 function ButtonConfirm({buttonName, onConfirmClick}){
     return(
-        <div id="ButtonConfirmWap">
+        <div id="ButtonConfirmWrap">
             <button id="ButtonConfirm" onClick={onConfirmClick}>{buttonName}</button>
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../css/Login.css";
 import Header from "./Header";
 import { Link } from "react-router-dom";
@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 
 function Login(){
     const navigate = useNavigate();
-    const [user, setUser] = useState("");
     const [input, setInput] = useState({
         email:'',
         pw:'',
@@ -24,20 +23,15 @@ function Login(){
         });
     }
 
-    useEffect(()=>{
-        if(user.length){
-            console.log(user);
-            
-        }
-    }, [user])
-
     async function siginIn(){
-        const uid = await firebaseLogin(input.email, input.pw).then(user => {
-           return user.uid;
+        const user = await firebaseLogin(input.email, input.pw).then(user => {
+           return user
         });
-        if(getUser(uid)){
-            setLoginState(true);
-            return;
+        if(user){
+            if(getUser(user.uid)){
+                setLoginState(true);
+                return;
+            }
         }
         setLoginState(false);
     }
@@ -46,22 +40,17 @@ function Login(){
     async function getUser(uid){
         const query = {var_name:"uid", operator:"==", data:uid};
         const result = await readFireStore("auth", query).then(res => {
-            saveUser(res._snapshot.docChanges[0].doc.data.value.mapValue.fields).then(res =>{
-                if(res){
-                    navigate("/Company");
-                }
-            });
+            saveUser(res._snapshot.docChanges[0].doc.data.value.mapValue.fields);
             return true;
         })
         return result;
     }
 
     async function saveUser(data){
-        return new Promise((reslove, reject) => {
-            sessionStorage.setItem("market_no", data.market_no.stringValue);
-            sessionStorage.setItem("uid", data.uid.stringValue);
-            reslove(true);
-        })
+        sessionStorage.setItem("market_no", data.market_no.stringValue);
+        sessionStorage.setItem("uid", data.uid.stringValue);
+        navigate("/Company");
+        return true;
     }
 
 

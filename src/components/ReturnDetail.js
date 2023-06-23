@@ -110,7 +110,6 @@ function ReturnDetail({returnId, user}){
             })
         }
     }
-
     
 
     async function upDateReturnState(op){
@@ -118,11 +117,15 @@ function ReturnDetail({returnId, user}){
         let data = {};
         if(op === "approve"){
             data = {
-                return_state:true
+                return_state:"true"
             }
         }else if(op === "cancel"){
             data = {
-                return_state:false
+                return_state:"false"
+            }
+        }else{
+            data = {
+                return_state:"refused"
             }
         }
         updateFireStore("return", returnData.document_id, data).then(res => {
@@ -133,8 +136,6 @@ function ReturnDetail({returnId, user}){
             }
         })
     }
-
-    console.log(modal);
 
     return(
         <div id="ReturnDetail">
@@ -169,22 +170,26 @@ function ReturnDetail({returnId, user}){
                 <ReturnDetailImg imgName={"오른쪽"} img={returnData.image_right}/>
                 <ReturnDetailImg imgName={"안쪽"} img={returnData.image_inside}/>
                 <table id="ReturnDetailTable" width={"100%"}>
-                <thead></thead>
-                <tbody>
-                    <tr>
-                        <th>카테고리</th><td>{returnData.category}</td>
-                    </tr>
-                    {user === "0101010101" ? <tr>
-                        <th>업체</th><td>{returnData.market_name}</td>
-                    </tr> : null}
-                    <tr>
-                        <th>환불 아이디</th><td>{returnData.return_id}</td>
-                    </tr>
-                </tbody>
-                <tfoot></tfoot>
-            </table>
-            {user === "0101010101" && !returnData.return_state ? <div id="ButtonConfrimWrap"><ButtonConfirm buttonName={"환불 승인"} onConfirmClick={() => {returnApproveClick("approve")}}/></div> : null}
-            {user === "0101010101" && returnData.return_state ? <div id="ButtonConfrimWrap"><ButtonConfirm buttonName={"승인 취소"} onConfirmClick={() => {returnApproveClick("cancel")}}/></div> : null}
+                    <thead></thead>
+                    <tbody>
+                        <tr>
+                            <th>카테고리</th><td>{returnData.category}</td>
+                        </tr>
+                        {user === "0101010101" ? <tr>
+                            <th>업체</th><td>{returnData.market_name}</td>
+                        </tr> : null}
+                        <tr>
+                            <th>환불 아이디</th><td>{returnData.return_id}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+                <div id="ButtonReturnApproveOptionWrap">
+                    {user === "0101010101" && returnData.return_state === "false"? <ButtonConfirm buttonName={"환불 승인"} onConfirmClick={() => {returnApproveClick("approve")}}/> : null}
+                    {user === "0101010101" && returnData.return_state === "false" ? <ButtonConfirm buttonName={"환불 거절"} onConfirmClick={() => {upDateReturnState("refuse")}}/> : null}
+                    {user === "0101010101" && returnData.return_state === "true"? <ButtonConfirm buttonName={"승인 취소"} onConfirmClick={() => {returnApproveClick("cancel")}}/> : null}
+                    {user === "0101010101" && returnData.return_state === "refused"? <ButtonConfirm buttonName={"반례 등록"} onConfirmClick={() => {}}/> : null}
+                </div>
             </div>
         </div>
     )

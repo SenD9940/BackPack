@@ -1,9 +1,12 @@
 import React from "react";
 import "../css/CompanyNavItem.css"
-function CompanyNavItem({navItem, navSelected, setNavSelected}){
+function CompanyNavItem({navName, navItem, navSelected, setNavSelected}){
     let style = null;
     if(navItem.name === navSelected){
         style = {backgroundColor:"#363636"}
+    }
+    if(navItem.name === navSelected && navName === "sub"){
+        style = {color:"black"}
     }
     function onNavClick(){
         setNavSelected(navItem.name);

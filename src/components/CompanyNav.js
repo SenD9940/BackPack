@@ -1,11 +1,11 @@
 import React from "react";
 import CompanyNavItem from "./CompanyNavItem";
 import "../css/CompanyNav.css";
-function CompanyNav({navName, navItems, navSelected, setNavSelected}){
+function CompanyNav({navName, navItems, navSelected}){
     function getNavs(){
         let navs = [];
         for(let i = 0; i < navItems.length; i++){
-            navs.push(<CompanyNavItem navName={navName} key={i + 1} navItem={navItems[i]} navSelected={navSelected} setNavSelected={setNavSelected}/>);
+            navs.push(<CompanyNavItem navName={navName} key={i + 1} navItem={navItems[i]} navSelected={navSelected}/>);
         }
         return navs;
     }

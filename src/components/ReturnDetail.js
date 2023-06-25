@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "../css/ReturnDetail.css";
-import { readFireStore, updateFireStore } from "../server/firebase";
+import { readFireStore, updateFireStore, writeFireStore } from "../server/firebase";
 import { decrypto } from "../functions/crypto";
 import ReturnDetailImg from "./ReturnDetailImg";
 import ButtonConfirm from "./ButtonConfrim";
 import Loading from "./Loading";
 import Modal from "./Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { setCounterTempData, setSelectedMainNavItem, setSelectedSubNavItem } from "../redux/action";
 
 function ReturnDetail({returnId, user}){
     const [loading, setLoading] = useState(false);
+    const [counter, setCounter] = useState(false);
     const [modal, setModal] = useState(false);
+    const counterTempData = useSelector(state => state.counterTempData);
+    const dispatch = useDispatch();
     const [returnData, setReturnData] = useState({
         application_date:'',
         return_id:'',
@@ -137,8 +142,36 @@ function ReturnDetail({returnId, user}){
         })
     }
 
+    function onModalConfirmClick(){
+        dispatch(setCounterTempData([{
+            img:returnData.image_front,
+            desc:"",
+        },
+        {
+            img:returnData.image_back,
+            desc:"",
+        },
+        {
+            img:returnData.image_left,
+            desc:"",
+        },
+        {
+            img:returnData.image_right,
+            desc:"",
+        },
+        {
+            img:returnData.image_inside,
+            desc:"",
+        }]));
+        dispatch(setSelectedMainNavItem("반례관리"));
+        dispatch(setSelectedSubNavItem("등록"));
+    }
+
+    console.log(counterTempData);
+
     return(
         <div id="ReturnDetail">
+            {counter ? <Modal title={"반례등록"} subTitle={"확인을 누르면 반례등록 페이지로 이등합니다"} onModalConfirm={onModalConfirmClick} onModalCancel={() => setCounter(false)}/> : null}
             {loading ? <Loading loadingLabel={"처리중입니다..."}/> : null }
             {modal ? <Modal title="처리되었습니다" onModalConfirm={()=>{setModal(false)}}/> : null }
             <div id="ReturnDetailCustomerInfo">
@@ -188,7 +221,7 @@ function ReturnDetail({returnId, user}){
                     {user === "0101010101" && returnData.return_state === "false"? <ButtonConfirm buttonName={"환불 승인"} onConfirmClick={() => {returnApproveClick("approve")}}/> : null}
                     {user === "0101010101" && returnData.return_state === "false" ? <ButtonConfirm buttonName={"환불 거절"} onConfirmClick={() => {upDateReturnState("refuse")}}/> : null}
                     {user === "0101010101" && returnData.return_state === "true"? <ButtonConfirm buttonName={"승인 취소"} onConfirmClick={() => {returnApproveClick("cancel")}}/> : null}
-                    {user === "0101010101" && returnData.return_state === "refused"? <ButtonConfirm buttonName={"반례 등록"} onConfirmClick={() => {}}/> : null}
+                    {user === "0101010101" && returnData.return_state === "refused"? <ButtonConfirm buttonName={"반례 등록"} onConfirmClick={() => {setCounter(true)}}/> : null}
                 </div>
             </div>
         </div>

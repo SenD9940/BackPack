@@ -4,14 +4,41 @@ import ListView from "./ListView";
 import { readFireStore } from "../server/firebase";
 import ReturnDetail from "./ReturnDetail";
 import ListItem from "./ListItem";
+import CompanyNav from "./CompanyNav";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedSubNavItem } from "../redux/action";
 
-function ReturnHistory({user, nav}){
+function ReturnHistory({user}){
+    const subNavItems = [
+        {
+            name:"전체",
+            onClick:() => {}
+        },
+        {
+            name:"미승인",
+            onClick:() => {}
+        },
+        {
+            name:"승인",
+            onClick:() => {}
+        },
+        {
+            name:"거절",
+            onClick:() => {}
+        },
+    ]
     const [history, setHistory] = useState([]);
     const [selectedItem, setSelectedItem] = useState('');
+    const selectedSubNavItem = useSelector(state => state.selectedSubNavItem);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setSelectedSubNavItem("전체"));
+    }, [])
+
     useEffect(()=>{
         setHistory([]);
         getHistoy();
-    }, [user, nav]);
+    }, [user, selectedSubNavItem]);
 
     useEffect(() =>{// 내림차순
         if(history.length !== 0){
@@ -45,13 +72,13 @@ function ReturnHistory({user, nav}){
     }
 
     function setHistoryList(data){
-        if(nav === "승인" && data.data().return_state === "true"){
+        if(selectedSubNavItem === "승인" && data.data().return_state === "true"){
             setHistory((history) => [...history, data.data()]);
-        }else if(nav === "미승인" && data.data().return_state === "false"){
+        }else if(selectedSubNavItem === "미승인" && data.data().return_state === "false"){
             setHistory((history) => [...history, data.data()]);
-        }else if(nav === "거절" && data.data().return_state === "refused"){
+        }else if(selectedSubNavItem === "거절" && data.data().return_state === "refused"){
             setHistory((history) => [...history, data.data()]);
-        }else if(nav === "전체"){
+        }else if(selectedSubNavItem === "전체"){
             setHistory((history) => [...history, data.data()]);
         }
     }
@@ -64,11 +91,14 @@ function ReturnHistory({user, nav}){
     }
     return(
         <div id="ReturnHistory">
-            {history.length !== 0 ? <ListView listTitle={"신청 목록"} >
-                {setItemList()}
-            </ListView> : null}
-            <div id="ReturnHistoryContent">
-            {history.length !== 0 ?<ReturnDetail returnId={selectedItem} user={user}/> : `${nav} 데이터가 없습니다`}
+            <CompanyNav navName={"sub"} navItems={subNavItems} navSelected={selectedSubNavItem}/>
+            <div id="ReturnHistoryWrap">
+                {history.length !== 0 ? <ListView listTitle={"신청 내역"} >
+                    {setItemList()}
+                </ListView> : null}
+                <div id="ReturnHistoryContent">
+                {history.length !== 0 ?<ReturnDetail returnId={selectedItem} user={user}/> : `${selectedSubNavItem} 데이터가 없습니다`}
+                </div>
             </div>
         </div>
     )

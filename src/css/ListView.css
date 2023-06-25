@@ -2,7 +2,6 @@
     display: flex;
     background-color: #4c4b4b;
     color: white;
-    height: 100%;
     width: fit-content;
     flex-direction: column;
     position: relative;

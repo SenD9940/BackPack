@@ -6,6 +6,9 @@ import { readFireStore } from "../server/firebase";
 import ReturnHistory from "../components/ReturnHistory";
 import ManageMarket from "../components/ManageMarket";
 import Profile from "../components/Profile";
+import CounterExample from "../components/CounterExample";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedMainNavItem } from "../redux/action";
 
 function Admin(){
     const uid = sessionStorage.getItem("uid");
@@ -29,54 +32,34 @@ function Admin(){
             });
         })
     }
-
-    const [navSelected, setNavSelected] = useState("환불내역");
-    const [subNavSelected, setSubNavSelected] = useState("전체내역");
     const navItems = [
-            {
-                name:"환불내역",
-                onClick:() => {}
-            },
-            {
-                name:"반례관리",
-                onClick:() => {}
-            },
-            {
-                name:"마켓관리",
-                onClick:() => {}
-            },
-            {
-                name:"프로필",
-                onClick:() => {}
-            }
-        ]
-
-    const subNavItems = [
         {
-            name:"전체",
+            name:"환불내역",
             onClick:() => {}
         },
         {
-            name:"미승인",
+            name:"반례관리",
             onClick:() => {}
         },
         {
-            name:"승인",
+            name:"마켓관리",
             onClick:() => {}
         },
         {
-            name:"거절",
+            name:"프로필",
             onClick:() => {}
-        },
+        }
     ]
+
+    const selectedMainNavItem = useSelector(state => state.selectedMainNavItem);
     return(
         <div id="Admin">
             <Header title={`${user.user_name} 운영자님`} subTitle={"환영합니다"}/>
-            <CompanyNav navName={"main"} navItems={navItems} navSelected={navSelected} setNavSelected={setNavSelected}/>
-            {navSelected === "환불내역" ? <CompanyNav navName={"sub"} navItems={subNavItems} navSelected={subNavSelected} setNavSelected={setSubNavSelected}/> : null}
-            {navSelected !== "마켓관리" && navSelected !== "프로필"? <ReturnHistory user={user.user_no} nav={subNavSelected}/> : null}
-            {navSelected === "마켓관리" ? <ManageMarket /> : null}
-            {navSelected === "프로필" ? <Profile uid={uid} /> : null}
+            <CompanyNav navName={"main"} navItems={navItems} navSelected={selectedMainNavItem}/>
+            {selectedMainNavItem === "환불내역" ? <ReturnHistory user={user.user_no}/> : null}
+            {selectedMainNavItem === "반례관리" ? <CounterExample /> : null}
+            {selectedMainNavItem === "마켓관리" ? <ManageMarket /> : null}
+            {selectedMainNavItem === "프로필" ? <Profile uid={uid} /> : null}
         </div>
     );
 }

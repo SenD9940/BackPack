@@ -1,0 +1,24 @@
+#ButtonCancelWrap{
+    display: inline-block;
+    justify-content: center;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+
+#ButtonCancel{
+    width: 120px;
+    background-color:#ffffff;
+    border: 1px solid grey;
+    color: black;
+    font-size: 18px;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+#ButtonCancel:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.025);
+    transition: 0.5s;
+}

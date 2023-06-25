@@ -1,6 +1,9 @@
 import React from "react";
 import "../css/CompanyNavItem.css"
-function CompanyNavItem({navName, navItem, navSelected, setNavSelected}){
+import { useDispatch } from "react-redux";
+import { setSelectedMainNavItem, setSelectedSubNavItem } from "../redux/action";
+function CompanyNavItem({navName, navItem, navSelected}){
+    const dispatch = useDispatch();
     let style = null;
     if(navItem.name === navSelected){
         style = {backgroundColor:"#363636"}
@@ -9,7 +12,11 @@ function CompanyNavItem({navName, navItem, navSelected, setNavSelected}){
         style = {color:"black"}
     }
     function onNavClick(){
-        setNavSelected(navItem.name);
+        if(navName === "main"){
+            dispatch(setSelectedMainNavItem(navItem.name));
+        }else if(navName === "sub"){
+            dispatch(setSelectedSubNavItem(navItem.name));
+        }
         navItem.onClick();
     }
     return(

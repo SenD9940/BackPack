@@ -1,5 +1,5 @@
 const initialState = {
-    counterTempData:[],
+    counterTempData:{title:"", contents:[]},
     selectedMainNavItem:"환불내역",
     selectedSubNavItem:"",
   };

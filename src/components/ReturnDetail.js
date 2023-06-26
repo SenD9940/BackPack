@@ -143,7 +143,9 @@ function ReturnDetail({returnId, user}){
     }
 
     function onModalConfirmClick(){
-        dispatch(setCounterTempData([{
+        dispatch(setCounterTempData({
+        title:"",
+        contents:[{
             img:returnData.image_front,
             desc:"",
         },
@@ -162,7 +164,8 @@ function ReturnDetail({returnId, user}){
         {
             img:returnData.image_inside,
             desc:"",
-        }]));
+        }]
+        }));
         dispatch(setSelectedMainNavItem("반례관리"));
         dispatch(setSelectedSubNavItem("등록"));
     }

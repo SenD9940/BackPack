@@ -6,6 +6,7 @@ function Navigation(){
     return(
         <div id="Navigation">
             <Link id="NavigationButtonCustomer" className="NavigationButton" to="Customer">환불하기</Link>
+            <Link id="NavigationButtonCustomer" className="NavigationButton" to="Customer">환불내역</Link>
             <Link className="NavigationButton" to={user ? "Company" : "Login"}>판매자</Link>
         </div>
     );

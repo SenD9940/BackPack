@@ -1,0 +1,11 @@
+#CounterExampleInquiry{
+    display: flex;
+    flex-direction: row;
+}
+
+@media all and (max-width: 950px){
+    #CounterExampleInquiry{
+        display: flex;
+        flex-direction: column;
+    }
+}

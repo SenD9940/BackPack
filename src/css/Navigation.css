@@ -1,5 +1,7 @@
 #Navigation{
     display: flex;
+    justify-content: space-between;
+    width: 300px;
 }
 
 .NavigationButton{
@@ -11,32 +13,15 @@
     letter-spacing: 1px;
     font-weight: 550;
     color: white;
-    margin-right: 140px;
-}
-
-#NavigationButtonCustomer{
-    margin-right: 16px;
-    padding-right: 16px;
-    border-right: solid 1px rgba(255, 255, 255, 0.5);
 }
 
 @media all and (max-width: 950px){
     .NavigationButton{
        color: white;
+       font-size: 16px;
     }
 
-    #NavigationButtonCustomer{
-        margin-right: 10px;
+    #Navigation{
+        width: 200px;
     }
-
-    .NavigationButton{
-        font-size: 16px;
-    }
-    #NavigationButtonCustomer{
-        border: none;
-    }
-    .NavigationButton{
-        margin-right: 10px;
-    }
-    
 }

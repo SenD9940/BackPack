@@ -54,9 +54,9 @@ function Profile({uid}){
         firebaseLogout().then(res => {
             if(res){
                 alert("로그아웃 되었습니다");
+                navigate("/");
                 sessionStorage.removeItem("market_no");
                 sessionStorage.removeItem("uid");
-                navigate("/");
             }
         })
     }

@@ -6,6 +6,7 @@ import Customer from './pages/Customer';
 import Register from './pages/Register';
 import FindAuthData from './pages/FindAuthData';
 import Login from './components/Login';
+import Return from "./pages/Return";
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Main/>}></Route>
             <Route path='/Customer' element={<Customer />}></Route>
+            <Route path='/Return' element={<Return />}></Route>
             <Route path='/Login' element={<Login/>}></Route>
             <Route path='/Company' element={<Company />}></Route>
             <Route path='/Login/Register' element={<Register />} ></Route>

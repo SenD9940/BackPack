@@ -1,0 +1,19 @@
+#Return{
+    padding: 16px;
+}
+
+#ReturnNavigation{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid grey;
+}
+
+.ReturnNavigationItem{
+    padding: 8px;
+}
+
+.ReturnNavigationItem:hover{
+    border-bottom: 2px solid blue;
+    color: blue;
+    font-weight: bolder;
+}

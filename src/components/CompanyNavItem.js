@@ -8,9 +8,11 @@ function CompanyNavItem({navName, navItem, navSelected}){
     if(navItem.name === navSelected){
         style = {backgroundColor:"#363636"}
     }
+
     if(navItem.name === navSelected && navName === "sub"){
         style = {color:"black"}
     }
+
     function onNavClick(){
         if(navName === "main"){
             dispatch(setSelectedMainNavItem(navItem.name));

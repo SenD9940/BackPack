@@ -8,6 +8,7 @@ import Loading from "./Loading";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { setCounterTempData, setSelectedMainNavItem, setSelectedSubNavItem } from "../redux/action";
+import ButtonCancel from "./ButtonCancel";
 
 function ReturnDetail({returnId, user}){
     const [loading, setLoading] = useState(false);
@@ -221,8 +222,8 @@ function ReturnDetail({returnId, user}){
                     <tfoot></tfoot>
                 </table>
                 <div id="ButtonReturnApproveOptionWrap">
+                    {user === "0101010101" && returnData.return_state === "false" ? <ButtonCancel buttonName={"환불 거절"} onCancelClick={() => {upDateReturnState("refuse")}}/> : null}
                     {user === "0101010101" && returnData.return_state === "false"? <ButtonConfirm buttonName={"환불 승인"} onConfirmClick={() => {returnApproveClick("approve")}}/> : null}
-                    {user === "0101010101" && returnData.return_state === "false" ? <ButtonConfirm buttonName={"환불 거절"} onConfirmClick={() => {upDateReturnState("refuse")}}/> : null}
                     {user === "0101010101" && returnData.return_state === "true"? <ButtonConfirm buttonName={"승인 취소"} onConfirmClick={() => {returnApproveClick("cancel")}}/> : null}
                     {user === "0101010101" && returnData.return_state === "refused"? <ButtonConfirm buttonName={"반례 등록"} onConfirmClick={() => {setCounter(true)}}/> : null}
                 </div>

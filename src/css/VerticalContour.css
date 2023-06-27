@@ -1,0 +1,9 @@
+#VerticalContour{
+    border:0.5px solid white;
+}
+
+@media all and (max-width: 950px){
+    #VerticalContour{
+        display: none;
+    }
+}

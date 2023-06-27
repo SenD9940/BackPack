@@ -2,6 +2,7 @@
     padding: 12px;
     width: 200px;
     text-align: center;
+    transition: 0.5s;
 }
 
 #ListItem:hover{

@@ -1,13 +1,11 @@
 #ButtonCancelWrap{
-    display: inline-block;
+    display: flex;
     justify-content: center;
-    margin-right: 8px;
-    margin-left: 8px;
 }
 
 
 #ButtonCancel{
-    width: 120px;
+    flex-grow: 1;
     background-color:#ffffff;
     border: 1px solid grey;
     color: black;
@@ -15,10 +13,9 @@
     padding: 12px;
     font-weight: bold;
     border-radius: 4px;
+    transition: 0.5s;
 }
 
 #ButtonCancel:hover{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transform: scale(1.025);
-    transition: 0.5s;
+    background-color: rgb(199, 199, 199);
 }

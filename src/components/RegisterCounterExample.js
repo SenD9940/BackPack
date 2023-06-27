@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../css/RegisterCounterExample.css";
-import { disableScroll, enableScroll } from "../functions/scroll";
 import ButtonConfirm from "./ButtonConfrim";
 import ButtonCancel from "./ButtonCancel";
-import TextInputForm from "./TextInputForm";
-import SelectImage from "./SelectImage";
 import ImageDesc from "./ImageDesc";
 import { useDispatch, useSelector } from "react-redux";
 import { setCounterTempData, setSelectedSubNavItem } from "../redux/action";
 import Modal from "./Modal";
 import { uploadStorage, writeFireStore } from "../server/firebase";
 import Loading from "./Loading";
+import { v4 as uuidv4 } from "uuid";
 
 function RegisterCounterExample(){
     const [input, setInput] = useState([]);
@@ -52,20 +50,29 @@ function RegisterCounterExample(){
         setRegisterModal(false);
         setLoading(true);
         for(let i = 0; i < counterTempData.contents.length; i++){
+            if(typeof counterTempData.contents[i].img === "string"){
+                continue;
+            }
             await uploadStorage(counterTempData.contents[i].img).then(res => {
                 let newCounterData = counterTempData;
-                newCounterData.contents[i] = res;
+                newCounterData.contents[i].img = res;
                 dispatch(setCounterTempData({...counterTempData, contents:newCounterData}));
             })
         }
 
         for(let i = 0; i < counterTempData.contents.length; i++){
-            if(typeof counterTempData.contents[i] !== "string"){
+            if(typeof counterTempData.contents[i].img !== "string"){
                 return;
             }
         }
+        
+        const data = {
+            title:counterTempData.title,
+            contents:counterTempData.contents,
+            id:uuidv4()
+        }
 
-        writeFireStore("counter", counterTempData).then(res => {
+        writeFireStore("counter", data).then(res => {
             dispatch(setCounterTempData({title:"", contents:[]}));
             dispatch(setSelectedSubNavItem("조회"));
         }).catch(err => {
@@ -95,7 +102,9 @@ function RegisterCounterExample(){
                 <button id="RegisterCounterExampleButtonAddImage" onClick={addImg}>이미지 추가</button>
             </div>
             <footer id="RegisterCounterExampleFooter" >
-                <ButtonCancel buttonName={"취소"} onCancelClick={() => setDeleteModal(true)}/>
+                <div style={{width:"120px"}}>
+                    <ButtonCancel buttonName={"취소"} onCancelClick={() => setDeleteModal(true)}/>
+                </div>
                 <div style={{width:"120px"}}>
                     <ButtonConfirm buttonName={"등록"} onConfirmClick={() => counterTempData.contents.length ? setRegisterModal(true): null}/>
                 </div>

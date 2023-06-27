@@ -31,21 +31,23 @@ function ReturnChart({marketNo}){
         if(marketNo === "0101010101"){
             query = null;
         }
-        readFireStore("return", query).then(res =>{
-            if(res.docChanges().length){
-                res.forEach(data => {
-                    const month = new Date(data.data().application_date.toDate()).getMonth() + 1;
-                    let findIndex = inital_data.findIndex(item => item.month === month);
-                    inital_data[findIndex].quantity += 1;
+        if(marketNo){
+            readFireStore("return", query).then(res =>{
+                if(res.docChanges().length){
+                    res.forEach(data => {
+                        const month = new Date(data.data().application_date.toDate()).getMonth() + 1;
+                        let findIndex = inital_data.findIndex(item => item.month === month);
+                        inital_data[findIndex].quantity += 1;
+                        setChartData(inital_data);
+                    });
+                }else{
+                    for(let i = 0; i < inital_data.length; i++){
+                        inital_data[0].quantity = 0;
+                    }
                     setChartData(inital_data);
-                });
-            }else{
-                for(let i = 0; i < inital_data.length; i++){
-                    inital_data[0].quantity = 0;
                 }
-                setChartData(inital_data);
-            }
-        })
+            })
+        }
     }
     console.log(chartData);
     return(
